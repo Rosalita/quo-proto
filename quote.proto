@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "/proto";
+
+message CreateQuoteRequest {
+    string quote_name = 1;
+    string quote_text = 2;
+}
+
+message CreateQuoteResponse {
+    string quote_name = 1;
+    string quote_text = 2;
+    google.protobuf.Timestamp createdAt = 3;
+}
+
+service QuoteService {
+    rpc CreateQuote(CreateQuoteRequest) returns(CreateQuoteResponse) {}
+}
